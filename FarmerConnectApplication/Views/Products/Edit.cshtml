@@ -1,0 +1,47 @@
+﻿@model FarmerConnectApplication.Models.Product
+@{
+    ViewData["Title"] = "Edit Product";
+    var isEmployee = User.IsInRole("Employee");
+    var farmerList = ViewBag.Farmers as List<SelectListItem>;
+}
+
+<h1>Edit Product</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Category" class="form-label"></label>
+        <input asp-for="Category" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ProductionDate" class="form-label"></label>
+        <input asp-for="ProductionDate" type="date" class="form-control" />
+        <span asp-validation-for="ProductionDate" class="text-danger"></span>
+    </div>
+
+    @if (isEmployee)
+    {
+        <div class="mb-3">
+            <label asp-for="FarmerId" class="form-label">Assign Farmer</label>
+            <select asp-for="FarmerId" class="form-select" asp-items="farmerList">
+                <option value="">-- Select Farmer --</option>
+            </select>
+            <span asp-validation-for="FarmerId" class="text-danger"></span>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="display-4 text-success fw-bold">Welcome to Agri-Energy Connect</h1>
+    <p class="lead mb-4">Empowering South African agriculture through technology and green energy integration.</p>
+
+    @if(!User.Identity?.IsAuthenticated ?? false)
+    {
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a class="btn btn-success btn-lg px-4 me-sm-3" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="btn btn-outline-secondary btn-lg px-4" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </div>
+    }
+    
+    <hr class="my-5" />
+
+    <div class="row">
+        <div class="col-md-4">
+            <h5>For Farmers</h5>
+            <p>Register products, monitor production, and grow your reach through technology.</p>
+        </div>
+        <div class="col-md-4">
+            <h5>For Employees</h5>
+            <p>Manage farmer registrations, review product submissions, and drive sustainable innovation.</p>
+        </div>
+        <div class="col-md-4">
+            <h5>For Partners</h5>
+            <p>Collaborate on bringing clean energy solutions to agricultural communities.</p>
+        </div>
+    </div>
+</div>

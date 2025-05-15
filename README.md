@@ -38,7 +38,7 @@ dotnet restore
 ```
 5. Run Migration
 ```
-add-migration InitialMigration
+add-migration InitialMigration and update-database 
 ```
 6. Run the Application
 ```
